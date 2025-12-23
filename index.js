@@ -5,9 +5,17 @@ const PORT = 3000;
 
 app.use(cors());
 
+
 app.get("/ping", (req, res) => {
-	res.send("pong");
+    res.json({
+        staus: "SUCCESS",
+        msg: "Pong"
+    });
 });
+
+app.all("/", (req, res) => {
+    res.redirect("/ping")
+})
 
 app.listen(PORT, (e) => {
 	console.log(`Server started at port: ${PORT}`);
